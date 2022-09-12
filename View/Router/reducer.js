@@ -6,11 +6,11 @@ const defaultState = {
 
 export default (state = defaultState, action) => {
     switch (action.type) {
-        case DETAIL_PAGE_LOADING:
-            return {
-                ...state,
-                detailPageLoading: action.data
-            }
+        // case DETAIL_PAGE_LOADING:
+        //     return {
+        //         ...state,
+        //         detailPageLoading: action.data
+        //     }
     }
 
     return state

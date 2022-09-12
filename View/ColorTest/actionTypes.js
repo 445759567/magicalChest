@@ -1,0 +1,1 @@
+//export const DEALS_LEARNING = 'ColorTest/DEALS_LEARNING'

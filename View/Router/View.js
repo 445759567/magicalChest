@@ -2,15 +2,36 @@ import React, {useEffect, useState} from 'react';
 import {View} from "react-native";
 import {connect} from "react-redux";
 import {NormalText} from "../../components";
+import Wiki from "../Wiki/View";
+import {NavigationContainer} from "@react-navigation/native";
+import Home from "../Home/View";
+import { createStackNavigator } from '@react-navigation/stack';
 
-function Rooter({...props}) {
-    const [value, setValue] = useState(0)
-    useEffect(() => {
-        console.log('hello')
-    }, []);
+function Router({...props}) {
+    const Stack = createStackNavigator()
+
+    const HomeStack = () =>{
+        return(
+            <Stack.Screen
+                name="home"
+                options={({navigation})=>({
+                    title: '',
+                    headerStyle: {
+                        height: 0,
+                    },
+                })}
+            >
+                {(props) => <Home {...props}/>}
+            </Stack.Screen>
+        )
+    }
     return (
-        <View>
-            <NormalText>Rooter: </NormalText>
+        <View style={{flex:1}}>
+            <NavigationContainer>
+                <Stack.Navigator>
+                    {HomeStack()}
+                </Stack.Navigator>
+            </NavigationContainer>
         </View>
     );
 }
@@ -28,4 +49,4 @@ const mapDispatch = (dispatch) => {
         // },
     }
 }
-export default connect(mapState, mapDispatch)(Rooter);
+export default connect(mapState, mapDispatch)(Router);
